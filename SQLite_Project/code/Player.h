@@ -53,6 +53,5 @@ public:
     void substractY(int);
 
     void showStats();
-    // Aqui deberian estar todas las funciones de SDL para dibujar el Player, establecer los Inputs y meter fisicas;
 };
 
