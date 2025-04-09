@@ -1,5 +1,5 @@
 #include "Ball.h"
-// Este codigo me lo ha cedido alicia, yo solo lo he modificado para integrarlo en mi programa
+
 short Ball::getX() {
     return x;
 }
