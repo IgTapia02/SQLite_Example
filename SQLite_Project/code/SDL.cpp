@@ -2,7 +2,6 @@
 
 #pragma region SDL
 
-// Este codigo me lo ha cedido alicia, yo solo lo he modificado para integrarlo en mi programa
 void write(SDL_Renderer* _renderer, string _text, int _x, int _y) {
     SDL_Color color = { 153, 255, 153, 255 };
     const char* t = _text.c_str();
@@ -40,14 +39,14 @@ void gameVisualsController(Match &_match, bool _loaded) {
     int width = SDL_GetWindowSurface(newWindow)->w;
     int height = SDL_GetWindowSurface(newWindow)->h;
 
-    //Posici髇 inicial jugador 1
+    //Posici贸n inicial jugador 1
     _match.player1->setPlayerRadius();
     _match.player1->setPlayerPosition(width / 4, height - _match.player1->getR());
-    //Posici髇 inicial jugador 2
+    //Posici贸n inicial jugador 2
     _match.player2->setPlayerRadius();
     _match.player2->setPlayerPosition(width - (width / 4), height - _match.player2->getR());
 
-    //Posici髇 inicial pelota
+    //Posici贸n inicial pelota
     ball.setBallPosition(newWindow);
     ball.setBallRadius();
 
@@ -65,7 +64,7 @@ void gameVisualsController(Match &_match, bool _loaded) {
         SDL_SetRenderDrawColor(newRenderer, 255, 255, 255, 255);
         SDL_RenderClear(newRenderer);
 
-        //Dibujar un rect醤gulo relleno:
+        //Dibujar un rect谩ngulo relleno:
         SDL_SetRenderDrawColor(newRenderer, 107, 53, 107, 255);
         SDL_Rect rectangle;
         rectangle.w = 100;
@@ -143,7 +142,7 @@ void gameVisualsController(Match &_match, bool _loaded) {
             dX *= -1;
             dY *= -1;
         }
-        //Colisi髇 de la pelota con los jugadores
+        //Colisi贸n de la pelota con los jugadores
         if (ball.getY() + ball.getR() >= _match.player1->getY() - _match.player1->getR() && ball.getX() + ball.getR() >= _match.player1->getX() - _match.player1->getR() && ball.getX() - ball.getR() <= _match.player1->getX() + _match.player1->getR()) {
             dY *= -1;
             dX *= -1;
@@ -152,13 +151,13 @@ void gameVisualsController(Match &_match, bool _loaded) {
             dY *= -1;
             dX *= -1;
         }
-        //Asignaci髇 de puntuaci髇 a los jugadores
+        //Asignaci贸n de puntuaci贸n a los jugadores
         if (ball.getY() + ball.getR() >= height && ball.getX() <= rectangle.x) {
             _match.points[1]++;
             //Se marca el bool serve del jugador 2 como true y se establece el del jugador 1 como false
             _match.player1->setServe(false);
             _match.player2->setServe(true);
-            //Se reestablece la posici髇 de la pelota
+            //Se reestablece la posici贸n de la pelota
             ball.setBallPosition(newWindow);
             if (dX <= 0) {
                 dX *= -1;
@@ -169,7 +168,7 @@ void gameVisualsController(Match &_match, bool _loaded) {
             //Se marca el bool serve del jugador 1 como true y se establece el del jugador 2 como false
             _match.player1->setServe(true);
             _match.player2->setServe(false);
-            //Se reestablece la posici髇 de la pelota
+            //Se reestablece la posici贸n de la pelota
             ball.setBallPosition(newWindow);
             if (dX >= 0) {
                 dX *= -1;
